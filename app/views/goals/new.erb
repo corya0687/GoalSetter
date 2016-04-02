@@ -1,0 +1,26 @@
+<div class="col-md-4 col-md-offset-4">
+    <h3>Create New Goal</h3>
+  <form action="/goals/new" method="POST">
+    <div class="form-group ">
+      <label for="name">Name Goal</label>
+      <input type="text" class="form-control" name="name" id="name" placeholder="name">
+    </div>
+
+
+    <div class="form-group ">
+      <label for="comment">Describe Goal using S.M.A.R.T</label>
+  <textarea class="form-control" rows="5" name="description" placeholder="S.M.A.R.T Description" id="comment"></textarea>
+    </div>
+
+
+    <div class="form-group ">
+      <label for="deadline">Set Deadline</label>
+      <input type="date" class="form-control" name="deadline" id="deadline" placeholder="Deadline">
+    </div>
+
+
+    <div class="form-group">
+      <input class="btn btn-default" type="submit" value="Set Goal">
+  </div>
+  </form>
+</div>

@@ -1,0 +1,3 @@
+<%current_user.goals.each do |goal|%>
+<h3><%=goal.name%> by: <%=goal.deadline.year%> <a href="/goals/<%=goal.id%>">View Goal</a></h3>
+<%end%>

@@ -1,4 +1,6 @@
 class Plan < ActiveRecord::Base
-  belongs_to :goals
-  validates_presence_of :description, :completed_by
+  belongs_to :goal
+  validates_presence_of :name, :description, :completed_by, :goal_id
+  include Slugifiable::Instance
+extend Slugifiable::Class
 end

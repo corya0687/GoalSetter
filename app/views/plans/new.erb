@@ -1,0 +1,50 @@
+<div class="col-md-4 col-md-offset-4">
+    <h3>Add plan</h3>
+  <form action="/plans/new" method="POST">
+
+    <div class="form-group ">
+      <label for="name">Plan Name</label>
+      <input type="text" class="form-control" name="plan[name]" id="name" placeholder="name">
+    </div>
+
+
+    <div class="form-group ">
+      <label for="comment">Describe Plan</label>
+  <textarea class="form-control" rows="5" name="plan[description]" placeholder="Description" id="comment"></textarea>
+    </div>
+
+
+    <div class="form-group ">
+      <label for="completed_by">Completed By</label>
+      <input type="date" class="form-control" name="plan[completed_by]" id="completed_by" placeholder="Completed By">
+    </div>
+
+    <div class="form-group ">
+      <h4>Which goal is this plan for?</h4>
+      <%current_user.goals.each do |goal|%>
+          <input type="radio" name="plan[goal_id]" value="<%=goal.id%>" id="goalchoice" ><%=goal.name%></input>
+          <%end%>
+    </div>
+    <h5>Or Create New Goal for this plan</h5>
+    <div class="form-group ">
+        <label for="goalname">Goal Name</label>
+        <input type="text" name="goal[name]" id="goalname">
+    </div>
+
+    <div class="form-group ">
+        <label for="goaldesc">Description</label>
+        <input type="text" name="goal[description]" id="goaldesc">
+    </div>
+
+    <div class="form-group ">
+        <label for="deadline">Deadline</label>
+        <input type="date" name="goal[deadline]" id="deadline">
+    </div>
+
+
+    <div class="form-group">
+      <input class="btn btn-default" type="submit" value="Add Plan">
+  </div>
+
+  </form>
+</div>
