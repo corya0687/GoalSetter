@@ -1,6 +1,7 @@
 class GoalController < ApplicationController
   get '/goals' do
     if logged_in?
+      @name = current_user.username
       erb :'goals/index'
     else
       redirect '/login'
@@ -8,6 +9,7 @@ class GoalController < ApplicationController
   end
 
   get '/goals/new' do
+    puts @hello
     if logged_in?
       erb :'goals/new'
     else
@@ -16,7 +18,8 @@ class GoalController < ApplicationController
   end
 
   post '/goals/new' do
-    current_user.goals << new_goal= Goal.create(params)
+    new_goal = current_user.goals.build(params)
+    new_goal.save
     redirect "/goals/#{new_goal.id}"
   end
 

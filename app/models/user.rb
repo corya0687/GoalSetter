@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email, :password_digest
   include Slugifiable::Instance
 extend Slugifiable::Class
+  
 end

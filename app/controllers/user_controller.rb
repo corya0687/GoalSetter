@@ -9,7 +9,7 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect "/#{current_user}"
+      redirect "/#{current_user.username}"
     else
       erb :'users/signup'
     end

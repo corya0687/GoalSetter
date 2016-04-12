@@ -14,9 +14,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      if @user= User.find_by(id: session[:user_id])
-        @user
-      end
+      # how would teach this method to find the user or return the previously found user
+      # on the first call of this method in a request cycle hit the DB
+      # on the next call of this method, just return the previouly found one.
+      @current_user ||= User.find_by(id: session[:user_id])
     end
 
     def login(params)

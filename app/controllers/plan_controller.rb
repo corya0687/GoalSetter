@@ -12,10 +12,18 @@ class PlanController < ApplicationController
     if params[:goal].any? {|key,value| value.empty?}
       @plan = Plan.create(params[:plan])
     else
-      goal = Goal.create(params[:goal])
-      params[:plan][:goal_id] = goal.id
-      @plan = Plan.create(params[:plan])
-      current_user.goals << goal
+
+      goal = Goal.new(params[:goal])
+      goal.plans.build(params[:plan])
+
+      goal.save
+      user_goal = current_user.user_goals.build(:goal => goal)
+      # user_goal = UsersGoal.new(:goal => goal, :user => current_user)
+      user_goal.save
+
+      # params[:plan][:goal_id] = goal.id
+      # @plan = Plan.create(params[:plan])
+      # current_user.goals << goal
     end
     redirect "/goals/#{@plan.goal_id}"
   end
